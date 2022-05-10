@@ -18,12 +18,14 @@ class ArmaSerializer(ModelSerializer):
     class Meta:
         model = Arma
         fields = '__all__'
+        read_only_fields = ['id']
 
 
 class MunicaoSerializer(ModelSerializer):
-    class Municao:
+    class Meta:
         model = Municao
         fields = '__all__'
+        read_only_fields = ['id']
 
 
 class ObjetoSerializer(ModelSerializer):
