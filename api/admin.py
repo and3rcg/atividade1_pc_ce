@@ -16,6 +16,9 @@ class MunicaoAdmin(admin.ModelAdmin):
 class ObjetoAdmin(admin.ModelAdmin):
     list_display = ('id', 'objeto_tipo')
 
+    def has_add_permission(self, request, obj=None) -> bool:
+        return False
+
 
 @admin.register(ObjetoTipo)
 class ObjetoTipoAdmin(admin.ModelAdmin):

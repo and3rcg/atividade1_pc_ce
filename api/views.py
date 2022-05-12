@@ -35,6 +35,14 @@ class ArmaViewset(viewsets.ModelViewSet):
 
         return Response(data={'erro': 'Valores inválidos.'}, status=status.HTTP_400_BAD_REQUEST)
 
+    def destroy(self, request, pk=None):
+        """
+        apaga a arma ao apagar o objeto relacionado (pelo CASCADE)
+        """
+        objeto = self.get_object().id
+        objeto.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
+
 
 class MunicaoViewset(viewsets.ModelViewSet):
     queryset = Municao.objects.all()
@@ -50,3 +58,11 @@ class MunicaoViewset(viewsets.ModelViewSet):
             return Response(data=MunicaoSerializer(nova_municao).data, status=status.HTTP_201_CREATED)
 
         return Response(data={'erro': 'Valores inválidos.'}, status=status.HTTP_400_BAD_REQUEST)
+
+    def destroy(self, request, pk=None):
+        """
+        apaga a munição ao apagar o objeto relacionado (pelo CASCADE)
+        """
+        objeto = self.get_object().id
+        objeto.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)
